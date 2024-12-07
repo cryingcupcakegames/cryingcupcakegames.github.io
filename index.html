@@ -5,37 +5,40 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Universal box-sizing reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
       font-family: Arial, sans-serif;
       background-color: #222;
       color: #fff;
-      margin: 0;
-      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     h1 {
-      font-size: 2rem; /* Standard size for desktop */
+      font-size: 2rem;
       margin: 20px 0;
+      text-align: center;
+      flex-shrink: 0;
     }
 
     .game-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; /* Center cards */
-      gap: 20px; /* Consistent gap */
-      margin: 0 auto;
+      justify-content: center;
+      gap: 20px;
       padding: 10px;
       width: 100%;
-      max-width: 1200px; /* Limit the width to avoid overflow */
+      max-width: 1200px;
+      flex-grow: 1;
+      overflow-y: auto;
     }
 
     .game-card {
@@ -44,7 +47,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       text-align: center;
-      width: 200px; /* Fixed card width for consistent layout */
+      width: 200px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -66,15 +69,15 @@
 
     .game-title {
       padding: 10px 15px;
-      font-size: 1rem; /* Standard size for desktop */
+      font-size: 1rem;
     }
 
     .footer {
-      margin: 30px 0;
       font-size: 0.8rem;
       color: #bdc3c7;
       text-align: center;
-      max-width: 100%; /* Prevent footer overflow */
+      margin: 10px 0;
+      flex-shrink: 0;
     }
 
     .footer a {
@@ -82,34 +85,33 @@
       text-decoration: none;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem; /* Larger title for tablets */
+        font-size: 2.5rem;
       }
       .game-card {
-        width: 180px; /* Slightly smaller card for tablets */
+        width: 180px;
       }
       .game-title {
-        font-size: 1.2rem; /* Larger text for tablets */
+        font-size: 1.2rem;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 3rem; /* Much larger title for smaller mobile screens */
+        font-size: 3rem;
       }
       .game-container {
-        gap: 25px; /* Slightly more spacing for mobile for clarity */
+        gap: 25px;
       }
       .game-card {
-        width: calc(100% - 40px); /* Full width with margins on mobile */
+        width: calc(100% - 40px);
       }
       .game-title {
-        font-size: 1.6rem; /* Large text for mobile for better readability */
+        font-size: 1.6rem;
       }
       .footer {
-        font-size: 1.2rem; /* Larger footer text for mobile */
+        font-size: 1.2rem;
       }
     }
   </style>
