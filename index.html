@@ -23,7 +23,7 @@
 
     h1 {
       font-size: 2rem;
-      margin: 10px 0;  /* Reduced margin between heading and cards */
+      margin: 20px 0;
       text-align: center;
       flex-shrink: 0;
     }
@@ -38,7 +38,6 @@
       max-width: 1200px;
       flex-grow: 1;
       align-items: center;
-      margin-top: 0;  /* Reduced space above the game cards */
     }
 
     .game-card {
@@ -50,9 +49,6 @@
       width: 200px;
       height: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .game-card:hover {
@@ -74,12 +70,11 @@
 
     .game-title {
       padding: 10px 15px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-align: center;
       min-height: 50px;
       overflow: hidden;
       line-height: 1.2;
-      flex-shrink: 0;
     }
 
     .footer {
@@ -108,10 +103,7 @@
         width: 180px;
       }
       .game-title {
-        font-size: 1.1rem;
-      }
-      .footer {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
       }
     }
 
@@ -125,13 +117,13 @@
         font-size: 3rem;
       }
       .game-card {
-        width: 250px;
+        width: 250px; /* Increased card width for mobile */
       }
       .game-title {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
       }
       .footer {
-        font-size: 0.7rem;
+        font-size: 1.2rem;
       }
     }
   </style>
