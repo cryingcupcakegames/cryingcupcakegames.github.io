@@ -17,15 +17,15 @@
     }
 
     h1 {
-      font-size: 2.5rem; /* Increased font size for better visibility */
+      font-size: 2rem; /* Standard size for desktop */
       margin: 20px 0;
     }
 
     .game-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      justify-content: center; /* Matches the centered layout of your original code */
+      gap: 20px; /* Consistent gap like your original code */
       margin: 0 auto;
       padding: 10px;
       width: 100%;
@@ -38,8 +38,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       text-align: center;
-      width: calc(100% - 40px); /* Full width minus padding for small screens */
-      max-width: 200px; /* Limit size for larger screens */
+      width: 200px; /* Matches the fixed size of your original code */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -61,12 +60,12 @@
 
     .game-title {
       padding: 10px 15px;
-      font-size: 1.2rem; /* Increased font size for game titles */
+      font-size: 1rem; /* Standard size for desktop */
     }
 
     .footer {
       margin: 30px 0;
-      font-size: 1rem; /* Increased font size for footer text */
+      font-size: 0.8rem;
       color: #bdc3c7;
       text-align: center;
     }
@@ -79,29 +78,31 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2rem; /* Slightly smaller title for tablets */
+        font-size: 2.5rem; /* Larger title for mobile */
       }
       .game-card {
-        max-width: 150px;
+        width: 180px; /* Slightly smaller card for tablets */
       }
       .game-title {
-        font-size: 1rem; /* Adjust game title size */
-      }
-      .footer {
-        font-size: 0.9rem; /* Adjust footer text size */
+        font-size: 1.2rem; /* Larger text for tablets */
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.8rem; /* Smaller title for mobile */
+        font-size: 3rem; /* Much larger title for smaller mobile screens */
       }
-      .footer {
-        font-size: 0.8rem; /* Adjust footer text size */
+      .game-container {
+        gap: 25px; /* Slightly more spacing for mobile for clarity */
       }
       .game-card {
-        width: 100%;
-        max-width: 100%;
+        width: calc(100% - 40px); /* Full width with margins on mobile */
+      }
+      .game-title {
+        font-size: 1.6rem; /* Large text for mobile for better readability */
+      }
+      .footer {
+        font-size: 1.2rem; /* Larger footer text for mobile */
       }
     }
   </style>
