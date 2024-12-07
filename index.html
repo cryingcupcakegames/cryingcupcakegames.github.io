@@ -13,7 +13,6 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
       font-family: Arial, sans-serif;
       background-color: #222;
       color: #fff;
@@ -38,7 +37,7 @@
       width: 100%;
       max-width: 1200px;
       flex-grow: 1;
-      overflow-y: auto;
+      align-items: center;
     }
 
     .game-card {
@@ -103,6 +102,8 @@
       }
       .game-container {
         gap: 25px;
+        justify-content: center;
+        align-items: center;
       }
       .game-card {
         width: calc(100% - 40px);
