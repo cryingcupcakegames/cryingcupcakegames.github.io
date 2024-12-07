@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crying Cupcake Games</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -19,6 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center; /* Center content vertically */
     }
 
     h1 {
@@ -30,13 +32,14 @@
 
     .game-container {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: wrap; /* Allow wrapping on mobile */
+      justify-content: center; /* Center horizontally */
       gap: 20px;
       width: 100%;
       max-width: 1200px;
       flex-grow: 1;
-      align-items: center;
+      padding: 20px;
+      align-items: center; /* Center the items vertically if there is space */
     }
 
     .game-card {
@@ -85,32 +88,43 @@
       text-decoration: none;
     }
 
+    /* Mobile Styles */
     @media (max-width: 768px) {
       h1 {
         font-size: 2.5rem;
-      }
-      .game-card {
-        width: 180px;
-      }
-      .game-title {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.8rem;
       }
       .game-container {
         gap: 20px;
         justify-content: center;
         align-items: center;
+        flex-direction: column; /* Stack cards vertically */
+        height: 100vh; /* Take up the full viewport height */
+        padding: 0; /* Remove extra padding */
       }
       .game-card {
-        width: calc(100% - 40px);
+        width: 80%; /* Take most of the width */
       }
       .game-title {
         font-size: 1.4rem;
+      }
+    }
+
+    /* Extra Small Devices */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      .game-container {
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Stack cards vertically */
+      }
+      .game-card {
+        width: 90%; /* Make the card slightly bigger */
+      }
+      .game-title {
+        font-size: 1.6rem;
       }
       .footer {
         font-size: 0.85rem;
@@ -120,7 +134,9 @@
   </style>
 </head>
 <body>
+
   <h1>Our Games</h1>
+
   <div class="game-container">
     <a href="https://magicalcatrescue.github.io/" class="game-link">
       <div class="game-card">
@@ -128,12 +144,14 @@
         <p class="game-title">Magical Cat Rescue</p>
       </div>
     </a>
+
     <a href="https://wordjazzgame.github.io/" class="game-link">
       <div class="game-card">
         <img src="wordjazz.png" class="game-image" alt="WordJazz">
         <p class="game-title">WordJazz</p>
       </div>
     </a>
+
     <a href="https://play.google.com/store/apps/details?id=com.ccg.longvsshort" class="game-link">
       <div class="game-card">
         <img src="longvsshort.png" class="game-image" alt="Long vs Short">
@@ -141,8 +159,10 @@
       </div>
     </a>
   </div>
+
   <div class="footer">
     <a href="mailto:cryingcupcakegames@gmail.com">&copy;2024 Crying Cupcake Games. All rights reserved.</a>
   </div>
+
 </body>
 </html>
