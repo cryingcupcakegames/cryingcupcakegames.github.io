@@ -26,6 +26,7 @@
       margin: 10px 0;  /* Reduced margin between heading and cards */
       text-align: center;
       flex-shrink: 0;
+      padding-top: 10px; /* Added padding to make sure the margin top is applied */
     }
 
     .game-container {
@@ -38,7 +39,7 @@
       max-width: 1200px;
       flex-grow: 1;
       align-items: center;
-      margin-top: 0;  /* Reduced space above the game cards */
+      margin-top: 0;  /* Removed any unnecessary margin from top */
     }
 
     .game-card {
@@ -83,11 +84,12 @@
     }
 
     .footer {
-      font-size: 0.8rem;
+      font-size: 0.7rem; /* Reduced footer size to fit in one line */
       color: #bdc3c7;
       text-align: center;
-      margin: 10px 0;
+      margin: 5px 0;  /* Reduced margin for footer */
       flex-shrink: 0;
+      white-space: nowrap; /* Ensures the footer text remains in one line */
     }
 
     .footer a {
