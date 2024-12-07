@@ -38,6 +38,7 @@
       max-width: 1200px;
       flex-grow: 1;
       align-items: center;
+      justify-content: center; /* Ensure centering */
     }
 
     .game-card {
@@ -47,7 +48,7 @@
       overflow: hidden;
       text-align: center;
       width: 200px;
-      height: 300px; /* Set a fixed height to ensure consistency */
+      height: 300px; /* Fixed height to maintain uniformity */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -72,8 +73,9 @@
       padding: 10px 15px;
       font-size: 1rem;
       text-align: center;
-      height: 50px; /* Fixed height for title */
+      min-height: 50px; /* Ensures a minimum height for consistency */
       overflow: hidden; /* Prevent text overflow */
+      line-height: 1.2; /* Adds a bit of space between lines */
     }
 
     .footer {
@@ -89,6 +91,7 @@
       text-decoration: none;
     }
 
+    /* Mobile layout adjustments */
     @media (max-width: 768px) {
       h1 {
         font-size: 2.5rem;
@@ -111,7 +114,7 @@
         align-items: center;
       }
       .game-card {
-        width: calc(100% - 40px);
+        width: calc(100% - 40px); /* Adjust for portrait mobile */
       }
       .game-title {
         font-size: 1.6rem;
