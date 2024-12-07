@@ -5,6 +5,11 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Universal box-sizing reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #222;
@@ -14,6 +19,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     h1 {
@@ -24,12 +30,12 @@
     .game-container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; /* Matches the centered layout of your original code */
-      gap: 20px; /* Consistent gap like your original code */
+      justify-content: center; /* Center cards */
+      gap: 20px; /* Consistent gap */
       margin: 0 auto;
       padding: 10px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1200px; /* Limit the width to avoid overflow */
     }
 
     .game-card {
@@ -38,7 +44,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       text-align: center;
-      width: 200px; /* Matches the fixed size of your original code */
+      width: 200px; /* Fixed card width for consistent layout */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -68,6 +74,7 @@
       font-size: 0.8rem;
       color: #bdc3c7;
       text-align: center;
+      max-width: 100%; /* Prevent footer overflow */
     }
 
     .footer a {
@@ -78,7 +85,7 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem; /* Larger title for mobile */
+        font-size: 2.5rem; /* Larger title for tablets */
       }
       .game-card {
         width: 180px; /* Slightly smaller card for tablets */
