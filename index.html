@@ -38,7 +38,6 @@
       max-width: 1200px;
       flex-grow: 1;
       align-items: center;
-      justify-content: center; /* Ensure centering */
     }
 
     .game-card {
@@ -108,13 +107,14 @@
       h1 {
         font-size: 3rem;
       }
-      .game-container {
-        gap: 25px;
-        justify-content: center;
-        align-items: center;
-      }
+  .game-container {
+    justify-content: center;  /* Centers the items horizontally */
+    align-items: center;      /* Centers the items vertically */
+    padding: 15px;            /* Optional: Adjust padding if needed */
+  }
+
       .game-card {
-        width: calc(100% - 40px); /* Adjust for portrait mobile */
+        width: 180px;
       }
       .game-title {
         font-size: 1.6rem;
