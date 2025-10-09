@@ -6,9 +6,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
     }
 
@@ -27,22 +25,17 @@
 
     h1 {
       font-size: 1.7rem;
-      margin: 0 0;
       margin-top: 25px;
       text-align: center;
-      flex-shrink: 0;
     }
 
     .game-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding: 10px;
       width: 100%;
       max-width: 1200px;
-      flex-grow: 1;
-      align-items: center;
       margin-top: 0;
     }
 
@@ -50,9 +43,8 @@
       background: #333;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
       text-align: center;
-      width: 180px;
+      width: 100%;
       height: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
@@ -81,14 +73,19 @@
       padding: 10px 15px;
       font-size: 1.2rem;
       text-align: center;
-      overflow: hidden;
-      line-height: 1.2;
-      flex-shrink: 0;
-      overflow-wrap: break-word;
-      flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .bmc-button-wrapper {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      margin: 20px 0;
+    }
+
+    .bmc-button-wrapper:hover {
+      transform: scale(1.1);
     }
 
     .footer {
@@ -96,7 +93,6 @@
       color: #bdc3c7;
       text-align: center;
       margin: 25px 0;
-      flex-shrink: 0;
     }
 
     .footer a {
@@ -104,19 +100,19 @@
       text-decoration: none;
     }
 
+    @media (max-width: 1024px) {
+      .game-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       .game-container {
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       h1 {
         font-size: 2.2rem;
-      }
-
-      .game-card {
-        width: 180px;
       }
 
       .game-title {
@@ -130,17 +126,11 @@
 
     @media (max-width: 480px) {
       .game-container {
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
+        grid-template-columns: 1fr;
       }
 
       h1 {
         font-size: 2.5rem;
-      }
-
-      .game-card {
-        width: 250px;
       }
 
       .game-title {
@@ -183,31 +173,34 @@
     </a>
     <a href="trafficjam3dnitrorush.html" class="game-link">
       <div class="game-card">
-        <img src="trafficjam3dnitrorush.png" class="game-image">
+        <img src="trafficjam3dnitrorush.png" class="game-image" alt="Traffic Jam 3D: Nitro Rush">
         <p class="game-title">Traffic Jam 3D: Nitro Rush</p>
       </div>
     </a>
     <a href="cryptoforecastandanalysis.html" class="game-link">
       <div class="game-card">
-        <img src="cryptoforecastandanalysis.png" class="game-image">
+        <img src="cryptoforecastandanalysis.png" class="game-image" alt="Crypto Forecast & Analysis">
         <p class="game-title">Crypto Forecast & Analysis</p>
       </div>
     </a>
     <a href="cupcakeworld.html" class="game-link">
       <div class="game-card">
-        <img src="cupcakeworld.png" class="game-image">
+        <img src="cupcakeworld.png" class="game-image" alt="Cupcake World">
         <p class="game-title">Cupcake World</p>
       </div>
     </a>
   </div>
 
-  <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
-    data-slug="cryingcupcakegames" data-color="#40DCA5" data-emoji="" data-font="Cookie" data-text="Buy me a coffee"
-    data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
-  <br>
+  <div class="bmc-button-wrapper">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
+      data-slug="cryingcupcakegames" data-color="#40DCA5" data-font="Cookie" data-text="Buy me a coffee"
+      data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+  </div>
+
   <span style="font-size: 0.7em; display: block; word-break: break-all;">
     Donate via USDT (TRC20): <code style="word-break: break-all;">TAHWSMsiQGrnNdbUC8mBidgxHK1ii4BYtN</code>
   </span>
+
   <div class="footer">
     <a href="mailto:cryingcupcakegames@gmail.com">&copy;2025 Crying Cupcake Games. All rights reserved.</a>
   </div>
