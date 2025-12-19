@@ -1,209 +1,327 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
   <title>Crying Cupcake Games</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play the latest fun and addictive games from Crying Cupcake Games.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
-    *,
-    *::before,
-    *::after {
+    /* --- CSS Variables for Consistency --- */
+    :root {
+      --bg-color: #121212;
+      --bg-gradient: radial-gradient(circle at top, #1e2224 0%, #121212 100%);
+      --card-bg: #1e1e1e;
+      --text-main: #ffffff;
+      --text-muted: #a0a0a0;
+      --accent-color: #40DCA5;
+      --accent-hover: #33b587;
+      --card-border: 1px solid #333;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      --card-hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* --- Reset & Base Styles --- */
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
-    html,
     body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #282a2b;
-      color: #fff;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
       display: flex;
       flex-direction: column;
       align-items: center;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    /* --- Header Section --- */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 800px;
     }
 
     h1 {
-      font-size: 1.7rem;
-      margin-top: 25px;
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+      background: linear-gradient(90deg, #fff, #bdc3c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 0;
+    }
+
+    /* --- Game Grid --- */
+    main {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      flex: 1; /* Pushes footer down */
     }
 
     .game-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
+      display: grid;
+      /* Responsive Grid Logic: Auto-fill columns, min width 200px */
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+      padding-bottom: 40px;
     }
 
     .game-card {
-      background: #333;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+      background: var(--card-bg);
+      border: var(--card-border);
+      border-radius: 12px;
       overflow: hidden;
-      text-align: center;
-      width: 180px;
-      height: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .game-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-    }
-
-    .game-link {
-      text-decoration: none;
-      color: inherit;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
       display: flex;
       flex-direction: column;
       height: 100%;
+      position: relative;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-hover-shadow);
+      border-color: var(--accent-color);
+    }
+
+    .game-image-container {
+      width: 100%;
+      aspect-ratio: 16/10; /* Enforce consistent shape */
+      overflow: hidden;
+      background-color: #000;
     }
 
     .game-image {
-      width: calc(100% - 20px);
-      height: 190px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
       display: block;
-      margin: 10px auto 0 auto;
-      border-radius: 8px;
     }
 
-    .game-title {
-      padding: 10px 15px;
-      font-size: 1.2rem;
-      text-align: center;
+    .game-card:hover .game-image {
+      transform: scale(1.1);
+    }
+
+    .game-info {
+      padding: 15px;
+      flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-grow: 1;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .game-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+    }
+
+    /* --- Donation & Footer Section --- */
+    .support-section {
+      background: rgba(255, 255, 255, 0.03);
+      border-top: 1px solid #333;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .bmc-container {
+      margin-bottom: 20px;
+      transform: scale(0.9); /* Slight adjust for the script button size */
+    }
+
+    .crypto-box {
+      background: #000;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 10px 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      max-width: 90vw;
+      word-break: break-all;
+    }
+
+    .crypto-label {
+      font-size: 0.8rem;
+      color: var(--text-main);
+      margin-bottom: 5px;
+      display: block;
     }
 
     .footer {
-      font-size: 0.8rem;
-      color: #bdc3c7;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #666;
       text-align: center;
-      margin: 25px 0 40px 0;
+      width: 100%;
+      background: #0d0d0d;
     }
 
-    .footer a {
-      color: inherit;
-      text-decoration: none;
+    .footer a:hover {
+      color: var(--accent-color);
     }
 
-    @media (max-width: 1024px) {
-      .game-card {
-        width: 180px;
-      }
-    }
-
+    /* --- Media Queries --- */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.2rem;
+      h1 { font-size: 2rem; }
+      .game-container { gap: 15px; }
+      
+      /* Make cards 2 columns on mobile instead of 1 big column if screen allows */
+      .game-container {
+         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
-
-      .game-card {
-        width: 180px;
-      }
-
-      .game-title {
-        font-size: 1.1rem;
-      }
-
-      .footer {
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      .game-card {
-        width: 250px;
-        height: 320px;
-      }
-
-      .game-image {
-        height: 210px;
-      }
-
-      .game-title {
-        font-size: 1.2rem;
-      }
-
-      .footer {
-        font-size: 0.8rem;
-      }
+      
+      .game-info { padding: 10px; }
+      .game-title { font-size: 0.9rem; }
     }
   </style>
 </head>
 
 <body>
-  <h1>Our Apps and Games</h1>
-  <div class="game-container">
-    <a href="https://magicalcatrescue.github.io/" class="game-link">
-      <div class="game-card">
-        <img src="y1Edvk.png" class="game-image" alt="Magical Cat Rescue">
-        <p class="game-title">Magical Cat Rescue</p>
-      </div>
-    </a>
-    <a href="https://wordjazzgame.github.io/" class="game-link">
-      <div class="game-card">
-        <img src="wordjazz.png" class="game-image" alt="WordJazz">
-        <p class="game-title">WordJazz</p>
-      </div>
-    </a>
-    <a href="longvsshort.html" class="game-link">
-      <div class="game-card">
-        <img src="longvsshort.png" class="game-image" alt="Long vs Short">
-        <p class="game-title">Long vs Short</p>
-      </div>
-    </a>
-    <a href="https://aimusicradio.github.io/" class="game-link">
-      <div class="game-card">
-        <img src="aimusicradio.png" class="game-image" alt="AI Radio">
-        <p class="game-title">AI Radio</p>
-      </div>
-    </a>
-    <a href="trafficjam3dnitrorush.html" class="game-link">
-      <div class="game-card">
-        <img src="trafficjam3dnitrorush.png" class="game-image" alt="Traffic Jam 3D: Nitro Rush">
-        <p class="game-title">Traffic Jam 3D: Nitro Rush</p>
-      </div>
-    </a>
-    <a href="cryptoforecastandanalysis.html" class="game-link">
-      <div class="game-card">
-        <img src="cryptoforecastandanalysis.png" class="game-image" alt="Crypto Forecast & Analysis">
-        <p class="game-title">Crypto Forecast & Analysis</p>
-      </div>
-    </a>
-    <a href="cupcakeworld.html" class="game-link">
-      <div class="game-card">
-        <img src="cupcakeworld.png" class="game-image" alt="Cupcake World">
-        <p class="game-title">Cupcake World</p>
-      </div>
-    </a>
-  </div>
 
-  <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
-    data-slug="cryingcupcakegames" data-color="#40DCA5" data-emoji="" data-font="Cookie" data-text="Buy me a coffee"
-    data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
-  <br>
-  <span style="font-size: 0.7em; display: block; word-break: break-all;">
-    Donate via USDT (TRC20): <code style="word-break: break-all;">TAHWSMsiQGrnNdbUC8mBidgxHK1ii4BYtN</code>
-  </span>
-  <div class="footer">
-    <a href="mailto:cryingcupcakegames@gmail.com">&copy;2025 Crying Cupcake Games. All rights reserved.</a>
-  </div>
+  <header>
+    <h1>Crying Cupcake Games</h1>
+    <p class="subtitle">Indie games and apps baked with love.</p>
+  </header>
+
+  <main>
+    <div class="game-container">
+      <a href="https://magicalcatrescue.github.io/" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="y1Edvk.png" class="game-image" alt="Magical Cat Rescue Gameplay" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">Magical Cat Rescue</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://wordjazzgame.github.io/" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="wordjazz.png" class="game-image" alt="WordJazz Logo" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">WordJazz</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="longvsshort.html" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="longvsshort.png" class="game-image" alt="Long vs Short" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">Long vs Short</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://aimusicradio.github.io/" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="aimusicradio.png" class="game-image" alt="AI Music Radio" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">AI Radio</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="trafficjam3dnitrorush.html" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="trafficjam3dnitrorush.png" class="game-image" alt="Traffic Jam 3D" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">Traffic Jam 3D: Nitro Rush</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="cryptoforecastandanalysis.html" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="cryptoforecastandanalysis.png" class="game-image" alt="Crypto Forecast" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">Crypto Forecast</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="cupcakeworld.html" class="game-link">
+        <div class="game-card">
+          <div class="game-image-container">
+            <img src="cupcakeworld.png" class="game-image" alt="Cupcake World" loading="lazy">
+          </div>
+          <div class="game-info">
+            <p class="game-title">Cupcake World</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <section class="support-section">
+    <div class="bmc-container">
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
+        data-name="bmc-button" data-slug="cryingcupcakegames" data-color="#40DCA5" 
+        data-emoji="" data-font="Cookie" data-text="Buy me a coffee" 
+        data-outline-color="#000000" data-font-color="#ffffff" 
+        data-coffee-color="#FFDD00"></script>
+    </div>
+    
+    <div>
+      <span class="crypto-label">Donate via USDT (TRC20)</span>
+      <div class="crypto-box">
+        TAHWSMsiQGrnNdbUC8mBidgxHK1ii4BYtN
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="mailto:cryingcupcakegames@gmail.com">&copy; 2025 Crying Cupcake Games. All rights reserved.</a>
+  </footer>
+
 </body>
-
 </html>
