@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- CSS Variables for Consistency --- */
+    /* --- CSS Variables --- */
     :root {
       --bg-color: #121212;
       --bg-gradient: radial-gradient(circle at top, #1e2224 0%, #121212 100%);
@@ -21,13 +21,12 @@
       --text-main: #ffffff;
       --text-muted: #a0a0a0;
       --accent-color: #40DCA5;
-      --accent-hover: #33b587;
       --card-border: 1px solid #333;
-      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      --card-hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      --card-hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     }
 
-    /* --- Reset & Base Styles --- */
+    /* --- Base Styles --- */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -49,94 +48,84 @@
     a {
       text-decoration: none;
       color: inherit;
-      transition: color 0.2s ease;
     }
 
-    /* --- Header Section --- */
+    /* --- Header --- */
     header {
       text-align: center;
-      padding: 60px 20px 40px;
-      max-width: 800px;
+      padding: 50px 20px 30px;
     }
 
     h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 2.5rem;
-      margin: 0 0 10px 0;
-      background: linear-gradient(90deg, #fff, #bdc3c7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 2.2rem;
+      margin: 0 0 5px 0;
       letter-spacing: -0.5px;
     }
 
     .subtitle {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-top: 0;
+      font-size: 1rem;
+      margin: 0;
     }
 
-    /* --- Game Grid --- */
+    /* --- Game Container (Flexbox for centering fixed cards) --- */
     main {
       width: 100%;
       max-width: 1200px;
       padding: 20px;
-      flex: 1; /* Pushes footer down */
+      flex: 1;
     }
 
     .game-container {
-      display: grid;
-      /* Responsive Grid Logic: Auto-fill columns, min width 200px */
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 25px;
       padding-bottom: 40px;
     }
 
+    /* --- Card Styles (Restored Dimensions) --- */
     .game-card {
       background: var(--card-bg);
       border: var(--card-border);
-      border-radius: 12px;
-      overflow: hidden;
+      border-radius: 10px;
       box-shadow: var(--card-shadow);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+      overflow: hidden;
+      
+      /* EXACT ORIGINAL DIMENSIONS */
+      width: 180px;
+      height: 300px;
+      
       display: flex;
       flex-direction: column;
-      height: 100%;
-      position: relative;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .game-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px) scale(1.02);
       box-shadow: var(--card-hover-shadow);
       border-color: var(--accent-color);
     }
 
-    .game-image-container {
-      width: 100%;
-      aspect-ratio: 16/10; /* Enforce consistent shape */
-      overflow: hidden;
-      background-color: #000;
-    }
-
-    .game-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      display: block;
-    }
-
-    .game-card:hover .game-image {
-      transform: scale(1.1);
-    }
-
-    .game-info {
-      padding: 15px;
-      flex-grow: 1;
+    .game-link {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top: 1px solid #2a2a2a;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Restored Image Dimensions */
+    .game-image {
+      width: calc(100% - 20px);
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      margin: 10px auto 0 auto;
+      border-radius: 6px;
+      background-color: #000; /* Placeholder if image loads slow */
     }
 
     .game-title {
@@ -144,10 +133,15 @@
       font-weight: 600;
       font-size: 1rem;
       text-align: center;
-      margin: 0;
+      padding: 10px 10px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
     }
 
-    /* --- Donation & Footer Section --- */
+    /* --- Footer & Donate --- */
     .support-section {
       background: rgba(255, 255, 255, 0.03);
       border-top: 1px solid #333;
@@ -155,61 +149,66 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 30px 20px;
       margin-top: auto;
       text-align: center;
     }
 
-    .bmc-container {
-      margin-bottom: 20px;
-      transform: scale(0.9); /* Slight adjust for the script button size */
+    .bmc-wrapper {
+      margin-bottom: 15px;
+      transform: scale(0.9);
     }
 
     .crypto-box {
       background: #000;
       border: 1px solid #333;
       border-radius: 6px;
-      padding: 10px 15px;
+      padding: 8px 12px;
       font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 10px;
+      margin-top: 5px;
       max-width: 90vw;
       word-break: break-all;
+      user-select: all; /* Makes it easy to select with one click */
     }
 
     .crypto-label {
       font-size: 0.8rem;
       color: var(--text-main);
-      margin-bottom: 5px;
       display: block;
+      margin-bottom: 5px;
     }
 
     .footer {
       padding: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #666;
-      text-align: center;
-      width: 100%;
       background: #0d0d0d;
+      width: 100%;
+      text-align: center;
     }
 
     .footer a:hover {
       color: var(--accent-color);
     }
 
-    /* --- Media Queries --- */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .game-container { gap: 15px; }
-      
-      /* Make cards 2 columns on mobile instead of 1 big column if screen allows */
-      .game-container {
-         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    /* --- Mobile Specifics (Restored Logic) --- */
+    @media (max-width: 480px) {
+      /* On small phones, your original code made cards BIGGER (250px) for easier tapping.
+         I have preserved this logic here. */
+      .game-card {
+        width: 250px;
+        height: 320px;
       }
-      
-      .game-info { padding: 10px; }
-      .game-title { font-size: 0.9rem; }
+
+      .game-image {
+        height: 210px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -218,92 +217,66 @@
 
   <header>
     <h1>Crying Cupcake Games</h1>
-    <p class="subtitle">Indie games and apps baked with love.</p>
+    <p class="subtitle">Indie games and apps baked with love</p>
   </header>
 
   <main>
     <div class="game-container">
-      <a href="https://magicalcatrescue.github.io/" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="y1Edvk.png" class="game-image" alt="Magical Cat Rescue Gameplay" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">Magical Cat Rescue</p>
-          </div>
-        </div>
-      </a>
+      
+      <div class="game-card">
+        <a href="https://magicalcatrescue.github.io/" class="game-link">
+          <img src="y1Edvk.png" class="game-image" alt="Magical Cat Rescue">
+          <p class="game-title">Magical Cat Rescue</p>
+        </a>
+      </div>
 
-      <a href="https://wordjazzgame.github.io/" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="wordjazz.png" class="game-image" alt="WordJazz Logo" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">WordJazz</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="https://wordjazzgame.github.io/" class="game-link">
+          <img src="wordjazz.png" class="game-image" alt="WordJazz">
+          <p class="game-title">WordJazz</p>
+        </a>
+      </div>
 
-      <a href="longvsshort.html" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="longvsshort.png" class="game-image" alt="Long vs Short" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">Long vs Short</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="longvsshort.html" class="game-link">
+          <img src="longvsshort.png" class="game-image" alt="Long vs Short">
+          <p class="game-title">Long vs Short</p>
+        </a>
+      </div>
 
-      <a href="https://aimusicradio.github.io/" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="aimusicradio.png" class="game-image" alt="AI Music Radio" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">AI Radio</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="https://aimusicradio.github.io/" class="game-link">
+          <img src="aimusicradio.png" class="game-image" alt="AI Radio">
+          <p class="game-title">AI Radio</p>
+        </a>
+      </div>
 
-      <a href="trafficjam3dnitrorush.html" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="trafficjam3dnitrorush.png" class="game-image" alt="Traffic Jam 3D" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">Traffic Jam 3D: Nitro Rush</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="trafficjam3dnitrorush.html" class="game-link">
+          <img src="trafficjam3dnitrorush.png" class="game-image" alt="Traffic Jam 3D: Nitro Rush">
+          <p class="game-title">Traffic Jam 3D: Nitro Rush</p>
+        </a>
+      </div>
 
-      <a href="cryptoforecastandanalysis.html" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="cryptoforecastandanalysis.png" class="game-image" alt="Crypto Forecast" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">Crypto Forecast</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="cryptoforecastandanalysis.html" class="game-link">
+          <img src="cryptoforecastandanalysis.png" class="game-image" alt="Crypto Forecast & Analysis">
+          <p class="game-title">Crypto Forecast & Analysis</p>
+        </a>
+      </div>
 
-      <a href="cupcakeworld.html" class="game-link">
-        <div class="game-card">
-          <div class="game-image-container">
-            <img src="cupcakeworld.png" class="game-image" alt="Cupcake World" loading="lazy">
-          </div>
-          <div class="game-info">
-            <p class="game-title">Cupcake World</p>
-          </div>
-        </div>
-      </a>
+      <div class="game-card">
+        <a href="cupcakeworld.html" class="game-link">
+          <img src="cupcakeworld.png" class="game-image" alt="Cupcake World">
+          <p class="game-title">Cupcake World</p>
+        </a>
+      </div>
+
     </div>
   </main>
 
   <section class="support-section">
-    <div class="bmc-container">
+    <div class="bmc-wrapper">
       <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
         data-name="bmc-button" data-slug="cryingcupcakegames" data-color="#40DCA5" 
         data-emoji="" data-font="Cookie" data-text="Buy me a coffee" 
@@ -313,9 +286,7 @@
     
     <div>
       <span class="crypto-label">Donate via USDT (TRC20)</span>
-      <div class="crypto-box">
-        TAHWSMsiQGrnNdbUC8mBidgxHK1ii4BYtN
-      </div>
+      <div class="crypto-box">TAHWSMsiQGrnNdbUC8mBidgxHK1ii4BYtN</div>
     </div>
   </section>
 
