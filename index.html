@@ -70,7 +70,7 @@
       margin: 0;
     }
 
-    /* --- Game Container (Flexbox for centering fixed cards) --- */
+    /* --- Game Container --- */
     main {
       width: 100%;
       max-width: 1200px;
@@ -86,15 +86,15 @@
       padding-bottom: 40px;
     }
 
-    /* --- Card Styles (Restored Dimensions) --- */
+    /* --- Card Styles --- */
     .game-card {
-      background: var(--card-bg);
+      background: var(--card-bg); /* Dark gray, not black */
       border: var(--card-border);
       border-radius: 10px;
       box-shadow: var(--card-shadow);
       overflow: hidden;
       
-      /* EXACT ORIGINAL DIMENSIONS */
+      /* Original Dimensions */
       width: 180px;
       height: 300px;
       
@@ -117,15 +117,14 @@
       width: 100%;
     }
 
-    /* Restored Image Dimensions */
     .game-image {
       width: calc(100% - 20px);
       height: 190px;
-      object-fit: cover;
+      object-fit: contain; /* Changed to 'contain' so transparent logos don't get cropped */
       display: block;
       margin: 10px auto 0 auto;
       border-radius: 6px;
-      background-color: #000; /* Placeholder if image loads slow */
+      background-color: transparent; /* Removed black background */
     }
 
     .game-title {
@@ -170,7 +169,7 @@
       margin-top: 5px;
       max-width: 90vw;
       word-break: break-all;
-      user-select: all; /* Makes it easy to select with one click */
+      user-select: all;
     }
 
     .crypto-label {
@@ -193,10 +192,8 @@
       color: var(--accent-color);
     }
 
-    /* --- Mobile Specifics (Restored Logic) --- */
+    /* --- Mobile Specifics --- */
     @media (max-width: 480px) {
-      /* On small phones, your original code made cards BIGGER (250px) for easier tapping.
-         I have preserved this logic here. */
       .game-card {
         width: 250px;
         height: 320px;
